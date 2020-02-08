@@ -1,10 +1,13 @@
 package com.example.sp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sp.data.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -14,18 +17,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
+
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class PostActivity extends AppCompatActivity {
 
+public class PostActivity extends AppCompatActivity {
     FirebaseFirestore db;
     Post thisPost;
     String TAG = "PostActivity";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,14 @@ public class PostActivity extends AppCompatActivity {
             public void onCallBack(Post post) {
                 thisPost = post;
                 setPostDisplay();
-                Log.d(TAG, thisPost.getId().toString());
+                final Button addComment = findViewById(R.id.btAddComment);
+                addComment.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        EditText etComm = findViewById(R.id.etComment);
+                        addComment(etComm.getText().toString());
+                    }
+                });
             }
         });
         
@@ -50,7 +58,6 @@ public class PostActivity extends AppCompatActivity {
     }
 
     private void addComment(String comment){
-        comment = "testing comments";
         Map<String, Object> mapcomment = new HashMap<>();
         mapcomment.put("comment", comment);
         if(thisPost!=null){
@@ -90,7 +97,7 @@ public class PostActivity extends AppCompatActivity {
                             String story = (String) document.getString("story");
                             long likes = 2;
                             long same = 3;
-                            thisPost = new Post(postId, uid, title, story, likes, same);
+                            thisPost = new Post(uid, title, story, likes, same);
                             firestoreCallBack.onCallBack(thisPost);
                         } else {
                             Log.d(TAG, "get failed with ", task.getException());
@@ -98,4 +105,6 @@ public class PostActivity extends AppCompatActivity {
                     }
                 });
     }
+
 }
+

@@ -28,20 +28,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(homeActivity.getBaseContext());
-        View view = layoutInflater.inflate(R.layout.single_row, parent, false);
+        View view = layoutInflater.inflate(R.layout.post_card, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.mUserName.setText(postArrayList.get(position).getTitle());
-        holder.mUserCountry.setText(postArrayList.get(position).getStory());
+        holder.mTitle.setText(postArrayList.get(position).getTitle());
+        holder.mLikeCount.setText(postArrayList.get(position).getLike()+"");
+        holder.mSameCount.setText(postArrayList.get(position).getSame()+"");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MyAdapter.this.homeActivity, PostActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                intent.putExtra("TITLE", postArrayList.get(position).getTitle());
+                intent.putExtra("TITLE", postArrayList.get(position).getId());
                 homeActivity.startActivity(intent);
             }
 

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sp.HomeActivity;
 import com.example.sp.PostActivity;
 import com.example.sp.R;
-import com.example.sp.adapter.MyViewHolder;
 import com.example.sp.data.Post;
 
 import java.util.ArrayList;

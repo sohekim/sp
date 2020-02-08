@@ -51,9 +51,10 @@
          //Read from UI components and create Post object
          //Pass post object to addPost(postObject) to be added into the database
 
-         final Post thisPost = new Post(thisUser.getId(), "My Title", "My Story blah blah blah", 10, 20);
+         final Post thisPost = new Post("0", thisUser.getId(), "My Title", "My Story blah blah blah", 10, 20);
 
          Map<String, Object> post = new HashMap<>();
+         post.put("postId", thisPost.getId());
          post.put("uid", thisPost.getId());
          post.put("title", thisPost.getTitle());
          post.put("story", thisPost.getStory());

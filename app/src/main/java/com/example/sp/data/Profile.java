@@ -6,11 +6,11 @@ import java.util.ArrayList;
 public class Profile implements Serializable {
 
     private String uid;
-
     private String name;
-    private String country;
-    private String email;
     private String city;
+    private String email;
+    private String age;
+    private String pronoun;
     private ArrayList<String> postsID;
 
 
@@ -18,16 +18,18 @@ public class Profile implements Serializable {
             String uid,
             String name,
             String email,
-            String country,
+            String age,
+            String pronoun,
             String city
     )
 
     {
         this.uid = uid;
         this.name = name;
-        this.country = country;
-        this.city = city;
         this.email = email;
+        this.age = age;
+        this.pronoun = pronoun;
+        this.city = city;
         postsID = new ArrayList<>();
     }
 
@@ -40,12 +42,14 @@ public class Profile implements Serializable {
     public String getEmail(){
         return email;
     }
-    public String getCountry(){
-        return country;
+    public String getAge(){
+        return age;
     }
+    public String getPronoun() {return pronoun;}
     public String getCity(){
         return city;
     }
+
     public boolean addPostID(String id){
         if(id == null || id.length() <= 0){
             return false;

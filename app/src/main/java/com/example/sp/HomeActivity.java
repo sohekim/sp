@@ -34,6 +34,7 @@
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        db = FirebaseFirestore.getInstance();
         thisUser = new Profile("UID", "Ahona", "androidas@hotmail.com", "Seoul", "Seoul");
         btnLogout = findViewById(R.id.button2);
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -44,5 +45,39 @@
                  startActivity(intToMain);
             }
         });
+         createPost();
     }
+     public void createPost(){
+         //Read from UI components and create Post object
+         //Pass post object to addPost(postObject) to be added into the database
+
+         final Post thisPost = new Post(thisUser.getId(), "My Title", "My Story blah blah blah", 10, 20);
+
+         Map<String, Object> post = new HashMap<>();
+         post.put("uid", thisPost.getId());
+         post.put("title", thisPost.getTitle());
+         post.put("story", thisPost.getStory());
+         post.put("likes", thisPost.getLike());
+         post.put("same", thisPost.getSame());
+
+         addPosts(thisPost);
+
+     }
+     public void addPosts(Post post){
+         db.collection("posts")
+                 .add(post)
+                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                     @Override
+                     public void onSuccess(DocumentReference documentReference) {
+                         thisUser.addPostID(documentReference.getId());
+                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                     }
+                 })
+                 .addOnFailureListener(new OnFailureListener() {
+                     @Override
+                     public void onFailure(@NonNull Exception e) {
+                         Log.w(TAG, "Error adding document", e);
+                     }
+                 });
+     }
 }

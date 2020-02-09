@@ -54,11 +54,10 @@
             <TextView
                 android:id="@+id/tvCount"
                 android:layout_width="match_parent"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-
-                android:text="40"
+                android:text="30"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="20dp"
                 android:textStyle="bold" />

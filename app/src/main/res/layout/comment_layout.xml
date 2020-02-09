@@ -18,17 +18,16 @@
 
         <ImageView
             android:id="@+id/ivBullet"
-            android:layout_width="match_parent"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_weight="5"
             app:srcCompat="@drawable/googleg_standard_color_18" />
 
         <TextView
             android:id="@+id/tvComment"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:padding="2dp"
+            android:background="@color/cardview_light_background"
             android:text="MyCommentMyCommentMyCommentMyCommentMyCommentMyCommentMyCommentMyComment"
             android:textSize="10dp" />
 

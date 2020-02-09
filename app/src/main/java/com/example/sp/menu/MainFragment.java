@@ -14,8 +14,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.example.sp.R;
 import com.example.sp.adapter.MyAdapter;
@@ -45,17 +43,13 @@ public class MainFragment extends Fragment {
     RecyclerView mRecyclerView;
     MyAdapter adapter;
 
-    View view;
-
     public MainFragment() {
         // Required empty public constructor
     }
 
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         db = FirebaseFirestore.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -69,12 +63,12 @@ public class MainFragment extends Fragment {
         return view;
     }
 
-    public void loadPosts(){
+    public void loadPosts() {
 
         db.collection("posts").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                for(DocumentSnapshot querySnapshot: task.getResult()){
+                for (DocumentSnapshot querySnapshot : task.getResult()) {
                     Post post = new Post(
                             querySnapshot.getId(),
                             querySnapshot.getString("id"),
@@ -93,5 +87,4 @@ public class MainFragment extends Fragment {
             }
         });
     }
-
 }

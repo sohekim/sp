@@ -42,7 +42,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(MyAdapter.this.mainFragment.getActivity(), PostActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                intent.putExtra("TITLE", postArrayList.get(position).getId());
+                intent.putExtra("POST_ID", postArrayList.get(position).getPostId());
                 mainFragment.startActivity(intent);
             }
 

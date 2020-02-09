@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="100dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:layout_margin="2dp"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/wrapper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="650dp"
-            android:layout_height="wrap_content"
+            android:layout_width="600dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_margin="5dp"
+            android:background="@color/cardview_dark_background"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Helloo muayfffffffff ffffffffhewodjbcsjfffndj nffjiijenen"
+                android:text="Why don't you put on more make up to look more lively"
                 android:textSize="30dp" />
 
         </LinearLayout>
@@ -31,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/cardview_light_background"
             android:orientation="vertical">
 
             <ImageView
@@ -43,10 +49,12 @@
             <TextView
                 android:id="@+id/tvCount"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="15dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="40" />
+                android:text="40"
+                android:textSize="20dp" />
+
         </LinearLayout>
 
     </LinearLayout>

@@ -44,6 +44,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final PostViewHolder holder, int position) {
+
+        Drawable d = ResourcesCompat.getDrawable(holder.itemView.getContext().getResources(), R.drawable.ic_favorite_black_24dp, null);
+        holder.mLikeView.setImageDrawable(d);
+
         final int safePosition = position;
         holder.mTitle.setText(postArrayList.get(position).getTitle());
         Typeface typeface = ResourcesCompat.getFont(holder.itemView.getContext(), R.font.yeseva_one);

@@ -50,6 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         db = FirebaseFirestore.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
+
 //        btnLogout = findViewById(R.id.button2);
 //        btnLogout.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -89,7 +90,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     public void InitializeFragment(androidx.fragment.app.Fragment fragment) {
@@ -98,38 +98,4 @@ public class HomeActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void createPost() {
-        //Read from UI components and create Post object
-        //Pass post object to addPost(postObject) to be added into the database
-
-        final Post thisPost = new Post(mFirebaseAuth.getUid(), "My Title", "My Story blah blah blah", 10, 20);
-
-        Map<String, Object> post = new HashMap<>();
-        post.put("uid", thisPost.getId());
-        post.put("title", thisPost.getTitle());
-        post.put("story", thisPost.getStory());
-        post.put("likes", thisPost.getLike());
-        post.put("same", thisPost.getSame());
-
-        addPosts(post);
-
-    }
-
-    public void addPosts(Map<String, Object> post) {
-        db.collection("posts")
-                .add(post)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-//                         thisUser.addPostID(documentReference.getId());
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
-    }
 }

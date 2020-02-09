@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="100dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Helloo muayfffffffff ffffffffhewodjbcsjfffndj nffjiijenen"
+                android:text="Why don't you put on more make up to look more lively"
                 android:textSize="30dp" />
 
         </LinearLayout>
@@ -32,21 +34,27 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/googleg_standard_color_18" />
-
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="15dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="40" />
+                android:text="40"
+                android:textSize="20dp" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_favorite_black_24dp" />
+
+
+
+
+
+
         </LinearLayout>
 
     </LinearLayout>

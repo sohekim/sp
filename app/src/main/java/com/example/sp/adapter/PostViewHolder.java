@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sp.R;
 
 
-public class MyViewHolder extends RecyclerView.ViewHolder {
+public class PostViewHolder extends RecyclerView.ViewHolder {
     public TextView mTitle,mLikeCount;
     public ImageView mLikeView;
 
 
-    public MyViewHolder(View itemView){
+    public PostViewHolder(View itemView){
         super(itemView);
         mTitle = itemView.findViewById(R.id.tvTitle);
         mLikeCount = itemView.findViewById(R.id.tvCount);

@@ -48,22 +48,6 @@ public class PostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
-//        db = FirebaseFirestore.getInstance();
-//        readData(new FirestoreCallBack() {
-//            @Override
-//            public void onCallBack(Post post) {
-//                thisPost = post;
-//                setPostDisplay();
-//                final Button addComment = findViewById(R.id.btAddComment);
-//                addComment.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        EditText etComm = findViewById(R.id.etComment);
-//                        addComment(etComm.getText().toString());
-//                    }
-//                });
-//            }
-//        });
 
         navigation = findViewById(R.id.bottomNavigationView);
         frameLayout = findViewById(R.id.frameLayout);

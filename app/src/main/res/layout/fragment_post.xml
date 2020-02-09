@@ -3,25 +3,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="110dp"
+    android:id="@+id/frameLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".menu.PostFragment">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="150dp"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etComment"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></EditText>
+            android:layout_height="400dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvPostTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My Title"
+                android:textSize="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/myCommentRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                tools:layout_editor_absoluteX="0dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/inputComment"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Comment"
-            android:id="@+id/btnAddComment"></Button>
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="16dp">
 
+            <EditText
+                android:id="@+id/etComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></EditText>
+
+            <Button
+                android:id="@+id/btnAddComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Comment"></Button>
+
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

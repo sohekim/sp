@@ -16,6 +16,8 @@ import com.example.sp.PostActivity;
 import com.example.sp.R;
 import com.example.sp.data.Post;
 import com.example.sp.menu.MainFragment;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -41,9 +43,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PostViewHolder holder, int position) {
         final int safePosition = position;
-
         holder.mTitle.setText(postArrayList.get(position).getTitle());
         Typeface typeface = ResourcesCompat.getFont(holder.itemView.getContext(), R.font.yeseva_one);
         holder.mTitle.setTypeface(typeface);
@@ -62,7 +63,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         holder.mLikeView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                // add number
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                int numLikes = Integer.parseInt(holder.mLikeCount.getText().toString());
+                numLikes++;
+                final String newLikes = numLikes+"";
+                DocumentReference heart = db.collection("posts").document(postArrayList.get(safePosition).getPostId());
+                heart.update("likes", newLikes);
+                holder.mLikeCount.setText(newLikes);
             }
 
         });

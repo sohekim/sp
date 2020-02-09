@@ -20,8 +20,10 @@ import com.example.sp.adapter.PostAdapter;
 import com.example.sp.data.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -85,5 +87,14 @@ public class MainFragment extends Fragment {
                 Log.w("Main Fragment Problem", e.getMessage());
             }
         });
+    }
+
+    public void updateHeart(String postId, String likes){
+        int numLikes = Integer.parseInt(likes);
+        numLikes++;
+        final String newLikes = numLikes+"";
+        DocumentReference heart = db.collection("posts").document(postId);
+        heart.update("likes", newLikes);
+        adapter.notifyDataSetChanged();
     }
 }

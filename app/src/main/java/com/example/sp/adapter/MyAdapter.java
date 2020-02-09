@@ -11,39 +11,39 @@ import com.example.sp.HomeActivity;
 import com.example.sp.PostActivity;
 import com.example.sp.R;
 import com.example.sp.data.Post;
+import com.example.sp.menu.MainFragment;
 
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
-    HomeActivity homeActivity;
+    MainFragment mainFragment;
     ArrayList<Post> postArrayList;
 
-    public MyAdapter(HomeActivity homeActivity, ArrayList<Post> postArrayList){
-        this.homeActivity = homeActivity;
+    public MyAdapter(MainFragment mainFragment, ArrayList<Post> postArrayList){
+        this.mainFragment = mainFragment;
         this.postArrayList = postArrayList;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(homeActivity.getBaseContext());
-        View view = layoutInflater.inflate(R.layout.single_row, parent, false);
+        LayoutInflater layoutInflater = LayoutInflater.from(mainFragment.getActivity().getBaseContext());
+        View view = layoutInflater.inflate(R.layout.card_layout, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.mTitle.setText(postArrayList.get(position).getTitle());
-        holder.mLikeCount.setText(postArrayList.get(position).getLike()+"");
-        holder.mSameCount.setText(postArrayList.get(position).getSame()+"");
+        holder.mLikeCount.setText(postArrayList.get(position).getLike());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyAdapter.this.homeActivity, PostActivity.class);
+                Intent intent = new Intent(MyAdapter.this.mainFragment.getActivity(), PostActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 intent.putExtra("TITLE", postArrayList.get(position).getId());
-                homeActivity.startActivity(intent);
+                mainFragment.startActivity(intent);
             }
 
         });
@@ -52,12 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return postArrayList.size();
     }
 
-    class myViewHolder extends RecyclerView.ViewHolder {
-        public myViewHolder(@NonNull View itemView) {
-            super(itemView);
-        }
-    }
 }

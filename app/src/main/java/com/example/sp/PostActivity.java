@@ -92,12 +92,11 @@ public class PostActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             String postId = "postID";
-                            String uid = (String) document.getString("id");
-                            String title = (String) document.getString("title");
-                            String story = (String) document.getString("story");
-                            long likes = 2;
-                            long same = 3;
-                            thisPost = new Post(uid, title, story, likes, same);
+                            String uid = document.getString("id");
+                            String title = document.getString("title");
+                            String story = document.getString("story");
+                            String likes = document.getString("likes");
+                            thisPost = new Post(document.getId(), uid, title, story, likes);
                             firestoreCallBack.onCallBack(thisPost);
                         } else {
                             Log.d(TAG, "get failed with ", task.getException());

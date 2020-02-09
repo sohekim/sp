@@ -11,17 +11,16 @@ import com.example.sp.R;
 
 
 public class MyViewHolder extends RecyclerView.ViewHolder {
-    public TextView mTitle,mLikeCount, mSameCount;
-    public Button mLike, mSame;
+    public TextView mTitle,mLikeCount;
+    public ImageView mLikeView;
 
 
     public MyViewHolder(View itemView){
         super(itemView);
         mTitle = itemView.findViewById(R.id.tvTitle);
-        mLikeCount = itemView.findViewById(R.id.tvLike);
-        mSameCount = itemView.findViewById(R.id.tvSame);
-        mLike = itemView.findViewById(R.id.btnLike);
-        mSame = itemView.findViewById(R.id.btnSame);
+        mLikeCount = itemView.findViewById(R.id.tvCount);
+        mLikeView = itemView.findViewById(R.id.ivLike);
+
     }
 
 }

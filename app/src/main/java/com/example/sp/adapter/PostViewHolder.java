@@ -16,6 +16,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
 
     public PostViewHolder(View itemView){
+
         super(itemView);
         mTitle = itemView.findViewById(R.id.tvTitle);
         mLikeCount = itemView.findViewById(R.id.tvCount);

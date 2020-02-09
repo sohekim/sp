@@ -51,7 +51,7 @@ public class AddFragment extends Fragment {
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         titleId = view.findViewById(R.id.title);
-        bodyId = view.findViewById(R.id.body);
+//        bodyId = view.findViewById(R.id.body);
         share = view.findViewById(R.id.share_btn);
         Log.d(TAG, "print sth");
 
@@ -61,7 +61,7 @@ public class AddFragment extends Fragment {
                 Log.d(TAG, "print sth2");
                 createPost();
                 titleId.setText("");
-                bodyId.setText("");
+//                bodyId.setText("");
                 Toast.makeText(getActivity(), "Your post have been uploaded!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -76,8 +76,9 @@ public class AddFragment extends Fragment {
         Map<String, Object> post = new HashMap<>();
         post.put("uid", mFirebaseAuth.getUid() + 1);
         post.put("title", titleId.getText().toString());
-        post.put("story", bodyId.getText().toString());
-        post.put("same", bodyId.getText().toString());
+        post.put("likes", 1);
+//        post.put("story", bodyId.getText().toString());
+//        post.put("same", bodyId.getText().toString());
 
         addPosts(post);
     }

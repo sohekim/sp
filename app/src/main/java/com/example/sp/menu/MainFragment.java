@@ -1,9 +1,11 @@
 package com.example.sp.menu;
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,6 +40,8 @@ public class MainFragment extends Fragment {
     RecyclerView mRecyclerView;
     PostAdapter adapter;
 
+
+
     public MainFragment() {
         // Required empty public constructor
     }
@@ -47,11 +51,11 @@ public class MainFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
         db = FirebaseFirestore.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
-
         mRecyclerView = view.findViewById(R.id.myRecyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         postList = new ArrayList<>();
+
 
         loadPosts();
 

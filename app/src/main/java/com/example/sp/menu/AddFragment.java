@@ -76,6 +76,7 @@ public class AddFragment extends Fragment {
         Map<String, Object> post = new HashMap<>();
         post.put("uid", mFirebaseAuth.getUid() + 1);
         post.put("title", titleId.getText().toString());
+        post.put("likes", 1);
 //        post.put("story", bodyId.getText().toString());
 //        post.put("same", bodyId.getText().toString());
 

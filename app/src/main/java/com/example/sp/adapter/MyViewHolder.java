@@ -11,14 +11,17 @@ import com.example.sp.R;
 
 
 public class MyViewHolder extends RecyclerView.ViewHolder {
-    public TextView mUserName, mUserCountry;
-    public ImageView mImage;
+    public TextView mTitle,mLikeCount;
+    public ImageView mLikeView;
+
+
 
     public MyViewHolder(View itemView){
         super(itemView);
-        mUserName = itemView.findViewById(R.id.userName);
-        mUserCountry = itemView.findViewById(R.id.userCountry);
-        mImage = itemView.findViewById(R.id.profileImage);
+        mTitle = itemView.findViewById(R.id.tvTitle);
+        mLikeCount = itemView.findViewById(R.id.tvCount);
+        mLikeView = itemView.findViewById(R.id.ivLike);
+
     }
 
 }

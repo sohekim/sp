@@ -2,24 +2,26 @@ package com.example.sp.data;
 
 public class Post {
     private String uid;
-
+    private String postId;
     private String title;
     private String story;
-    private long same;
-    private long like;
+    private String like;
 
     public Post(
+            String postId,
             String uid,
             String title,
             String story,
-            long same,
-            long like
+            String like
     ){
-        this.like = like;
+        this.postId = postId;
         this.title = title;
-        this.same = same;
+        this.like = like;
         this.story = story;
         this.uid = uid;
+    }
+    public String getPostId(){
+        return postId;
     }
     public String getId(){
         return uid;
@@ -27,10 +29,7 @@ public class Post {
     public String getTitle(){
         return title;
     }
-    public long getSame(){
-        return same;
-    }
-    public long getLike(){
+    public String getLike(){
         return like;
     }
     public String getStory(){
